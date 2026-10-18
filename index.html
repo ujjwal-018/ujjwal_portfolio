@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ujjwal Soni — Digital & Performance Marketer | Delhi & Bengaluru</title>
+  
+  <!-- Google Fonts for Editorial Brutalism -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #ece8e1;
+      --card-bg: #f5f2eb;
+      --ink: #141414;
+      --border: #141414;
+      --accent-pink: #ffd6e0;
+      --accent-green: #d2f8d2;
+      --accent-yellow: #fff3b0;
+      --font-body: 'Space Mono', monospace;
+      --font-display: 'Space Grotesk', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Sakura Canvas in Background */
+    #sakura-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Top Nav */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.75rem 0;
+      border-bottom: 2px solid var(--border);
+    }
+    .nav-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.6rem;
+      border: 1.5px solid var(--border);
+      background: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      box-shadow: 2px 2px 0px var(--border);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 4rem 0 3rem;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 3rem;
+      align-items: center;
+      position: relative;
+    }
+
+    .sticker-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #fff;
+      border: 2px solid var(--border);
+      padding: 0.5rem 1.2rem;
+      font-size: 1.8rem;
+      font-weight: 700;
+      font-family: var(--font-display);
+      text-transform: uppercase;
+      transform: rotate(-2deg);
+      box-shadow: 4px 4px 0px var(--border);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      line-height: 1.1;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-bio {
+      font-size: 1rem;
+      color: #333;
+      margin-bottom: 2rem;
+      max-width: 520px;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 1.6rem;
+      background: var(--ink);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      border: 2px solid var(--border);
+      box-shadow: 3px 3px 0 var(--border);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .btn:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 5px 5px 0 var(--border);
+    }
+    .btn-secondary {
+      background: #fff;
+      color: var(--ink);
+    }
+
+    /* Avatar Box */
+    .hero-avatar-box {
+      position: relative;
+      border: 2px solid var(--border);
+      background: #fff;
+      padding: 0.75rem;
+      box-shadow: 6px 6px 0 var(--border);
+    }
+    .avatar-img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      filter: grayscale(100%) contrast(110%);
+      display: block;
+      border: 1px solid var(--border);
+    }
+    .hero-avatar-tag {
+      position: absolute;
+      bottom: -15px;
+      right: -10px;
+      background: #fff;
+      border: 2px solid var(--border);
+      padding: 0.35rem 0.9rem;
+      font-family: var(--font-display);
+      font-weight: 700;
+      box-shadow: 3px 3px 0 var(--border);
+      transform: rotate(3deg);
+    }
+
+    /* Metric Bar */
+    .metric-ribbon {
+      border: 2px solid var(--border);
+      background: #fff;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      margin: 2rem 0 4rem;
+      box-shadow: 4px 4px 0 var(--border);
+    }
+    .metric-cell {
+      padding: 1.5rem 1rem;
+      border-right: 2px solid var(--border);
+      text-align: center;
+    }
+    .metric-cell:last-child {
+      border-right: none;
+    }
+    .metric-num {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .metric-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #555;
+    }
+
+    /* Section Headers */
+    .section-title-wrap {
+      text-align: center;
+      margin: 4.5rem 0 2.5rem;
+    }
+    .section-title {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      background: #fff;
+      border: 2px solid var(--border);
+      padding: 0.5rem 2rem;
+      box-shadow: 4px 4px 0 var(--border);
+      letter-spacing: 0.05em;
+    }
+
+    /* Projects / Case Studies */
+    .project-card {
+      background: #fff;
+      border: 2px solid var(--border);
+      margin-bottom: 2rem;
+      box-shadow: 5px 5px 0 var(--border);
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+    }
+    .project-preview {
+      border-right: 2px solid var(--border);
+      background: #e2ded5;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .project-content {
+      padding: 2.5rem;
+    }
+    .project-meta {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #666;
+      margin-bottom: 0.5rem;
+    }
+    .project-name {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    .project-stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .stat-pill {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 0.6rem 0.8rem;
+    }
+    .stat-pill strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+    }
+    .stat-pill span {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+    }
+
+    /* Services Grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+    .service-card {
+      background: #fff;
+      border: 2px solid var(--border);
+      padding: 1.75rem;
+      box-shadow: 4px 4px 0 var(--border);
+      transition: transform 0.15s;
+    }
+    .service-card:hover {
+      transform: translateY(-3px);
+    }
+    .service-icon {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+    .service-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+    .service-desc {
+      font-size: 0.85rem;
+      color: #444;
+    }
+
+    /* Gamified Marketing Snake */
+    .game-section {
+      background: #fff;
+      border: 2px solid var(--border);
+      padding: 2rem;
+      margin: 4rem 0;
+      box-shadow: 6px 6px 0 var(--border);
+    }
+    .game-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .game-scoreboard {
+      display: flex;
+      gap: 1.5rem;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+    }
+    #game-canvas {
+      background: #111;
+      display: block;
+      margin: 0 auto;
+      border: 2px solid var(--border);
+      max-width: 100%;
+    }
+    .game-controls-help {
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #555;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 2px solid var(--border);
+      padding: 3rem 0;
+      margin-top: 5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 820px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: left;
+      }
+      .project-card {
+        grid-template-columns: 1fr;
+      }
+      .project-preview {
+        border-right: none;
+        border-bottom: 2px solid var(--border);
+      }
+      .metric-ribbon {
+        grid-template-columns: 1fr 1fr;
+      }
+      .metric-cell:nth-child(2) {
+        border-right: none;
+      }
+      .metric-cell:nth-child(-n+2) {
+        border-bottom: 2px solid var(--border);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Sakura Petals -->
+  <canvas id="sakura-canvas"></canvas>
+
+  <div class="container">
+    <!-- Top Nav -->
+    <nav>
+      <div class="nav-label">PORTFOLIO // 2026 EDITION</div>
+      <div class="badge">OPEN FOR ROLES: DELHI NCR & BENGALURU</div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-left">
+        <div class="sticker-tag">
+          <span>☺</span> UJJWAL SONI
+        </div>
+        <h1 class="hero-title">PERFORMANCE MARKETER WITH CODE-LEVEL DEPTH.</h1>
+        <p class="hero-bio">
+          I bridge the gap between creative ad campaigns and high-converting tech. Specialized in Meta Ads, Pinterest growth, AI-driven automation, and landing page conversion rate optimization for fast-scaling brands and agency accounts.
+        </p>
+        <div class="hero-cta-group">
+          <a href="#work" class="btn">VIEW CAMPAIGNS</a>
+          <a href="#snake-game" class="btn btn-secondary">PLAY GROWTH SNAKE 🕹️</a>
+          <a href="mailto:ujjwalsoni.work@gmail.com" class="btn btn-secondary">GET IN TOUCH</a>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-avatar-box">
+          <!-- Fallback dynamic avatar using user handle -->
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=80" 
+               alt="Ujjwal Soni" 
+               class="avatar-img" />
+          <div class="hero-avatar-tag">@soniujjwal651</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Metrics Ribbon -->
+    <div class="metric-ribbon">
+      <div class="metric-cell">
+        <div class="metric-num">3.8x</div>
+        <div class="metric-label">Target ROAS Modeled</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-num">-28%</div>
+        <div class="metric-label">Target CAC Reduction</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-num">50+</div>
+        <div class="metric-label">Ad Hooks & Briefs Tested</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-num">&lt;1.2s</div>
+        <div class="metric-label">Next.js LP Load Time</div>
+      </div>
+    </div>
+
+    <!-- Case Studies / Work Section -->
+    <div class="section-title-wrap" id="work">
+      <div class="section-title">SELECTED WORK & CAMPAIGNS</div>
+    </div>
+
+    <!-- Project 1 -->
+    <article class="project-card">
+      <div class="project-preview">
+        <div class="badge" style="width: fit-content; margin-bottom: 1rem;">CASE STUDY 01</div>
+        <h3 style="font-family: var(--font-display); font-size: 1.4rem; margin-bottom: 0.5rem;">VEXO APPAREL</h3>
+        <p style="font-size: 0.85rem; color: #444;">D2C Streetwear Brand Strategy & Visual Commerce Playbook.</p>
+      </div>
+      <div class="project-content">
+        <div class="project-meta">ORGANIC & PAID PINTEREST + INSTAGRAM ADS</div>
+        <h2 class="project-name">Scaling Pin Velocity & Top-of-Funnel Brand Discovery</h2>
+        <p style="font-size: 0.9rem; color: #333;">
+          Designed end-to-end creative planning for high-intent aesthetic fashion audiences. Produced 45+ vertical lifestyle pins, high-contrast carousel concepts, and SEO-optimized boards focused on seasonal drops.
+        </p>
+
+        <div class="project-stats-grid">
+          <div class="stat-pill">
+            <strong>+140%</strong>
+            <span>Est. Organic Impressions</span>
+          </div>
+          <div class="stat-pill">
+            <strong>4.2%</strong>
+            <span>Average Pin Click-Through Rate</span>
+          </div>
+          <div class="stat-pill">
+            <strong>45+</strong>
+            <span>A/B Creative Hooks Tested</span>
+          </div>
+          <div class="stat-pill">
+            <strong>Tier-1</strong>
+            <span>Delhi & BLR Metro Targeting</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 2 -->
+    <article class="project-card">
+      <div class="project-preview">
+        <div class="badge" style="width: fit-content; margin-bottom: 1rem;">CASE STUDY 02</div>
+        <h3 style="font-family: var(--font-display); font-size: 1.4rem; margin-bottom: 0.5rem;">FULL-FUNNEL LEAD GEN</h3>
+        <p style="font-size: 0.85rem; color: #444;">High-Intent B2B/EdTech Lead Capture Framework.</p>
+      </div>
+      <div class="project-content">
+        <div class="project-meta">META ADS + CUSTOM NEXT.JS LANDING PAGE</div>
+        <h2 class="project-name">Instant Form vs. Custom LP Conversion Rate Optimization</h2>
+        <p style="font-size: 0.9rem; color: #333;">
+          Built custom Next.js landing pages paired with Meta Lead Generation forms. Leveraged developer skills to implement custom GTM events, Facebook CAPI tracking, and ultra-fast mobile loading speeds under 1.2s.
+        </p>
+
+        <div class="project-stats-grid">
+          <div class="stat-pill">
+            <strong>24.6%</strong>
+            <span>LP Submission Rate</span>
+          </div>
+          <div class="stat-pill">
+            <strong>₹42</strong>
+            <span>Avg CPL on Broad Metro Audiences</span>
+          </div>
+          <div class="stat-pill">
+            <strong>98/100</strong>
+            <span>Google PageSpeed Mobile Score</span>
+          </div>
+          <div class="stat-pill">
+            <strong>100%</strong>
+            <span>Server-side CAPI Match Rate</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Services / Core Competencies -->
+    <div class="section-title-wrap">
+      <div class="section-title">CORE SKILLS & AGENCY VALUE</div>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h3 class="service-title">Performance Media</h3>
+        <p class="service-desc">Meta Ads Manager, Google Search/Performance Max, budget allocation, audience testing, and ROAS optimization.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⚡</div>
+        <h3 class="service-title">Full-Stack CRO</h3>
+        <p class="service-desc">React & Next.js landing pages built for 90+ Lighthouse scores. No slow WordPress page-builder drop-offs.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🤖</div>
+        <h3 class="service-title">AI & Creative Automation</h3>
+        <p class="service-desc">AI-assisted copy generation, Midjourney/Canva automated workflows for rapid weekly creative iterations.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🎯</div>
+        <h3 class="service-title">Tracking & Attribution</h3>
+        <p class="service-desc">Meta Pixel & Conversions API (CAPI), Google Tag Manager, GA4 event architecture, and UTM taxonomy.</p>
+      </div>
+    </div>
+
+    <!-- Gamified Section: Marketing Snake Game -->
+    <div class="section-title-wrap" id="snake-game">
+      <div class="section-title">CAMPAIGN RUNNER: SNAKE EDITION</div>
+    </div>
+
+    <div class="game-section">
+      <div class="game-header">
+        <div>
+          <h3 style="font-family: var(--font-display); font-size: 1.3rem;">HARVEST ROAS & LEADS</h3>
+          <p style="font-size: 0.8rem; color: #555;">Eat high-converting signals. Avoid walls and ad spend burnouts!</p>
+        </div>
+        <div class="game-scoreboard">
+          <div>METRIC: <span id="current-kpi" style="color: #2b8a3e;">ROAS</span></div>
+          <div>SCORE: <span id="game-score">0</span></div>
+          <div>HIGH SCORE: <span id="game-high">0</span></div>
+        </div>
+      </div>
+
+      <canvas id="game-canvas" width="600" height="300"></canvas>
+      <div class="game-controls-help">
+        Use <strong>Arrow Keys</strong> or <strong>W, A, S, D</strong> to navigate. Click canvas to start/restart.
+      </div>
+    </div>
+
+    <!-- Footer / Contact Info -->
+    <footer>
+      <div>
+        <div style="font-family: var(--font-display); font-weight: 700; font-size: 1.2rem;">UJJWAL SONI</div>
+        <p style="font-size: 0.8rem; color: #666;">Available for full-time roles & high-impact internships.</p>
+      </div>
+      <div style="display: flex; gap: 1rem; align-items: center;">
+        <a href="https://github.com/ujjwal-018" target="_blank" style="color: var(--ink); font-weight: 700; text-decoration: none;">GitHub</a>
+        <span>•</span>
+        <a href="#" style="color: var(--ink); font-weight: 700; text-decoration: none;">LinkedIn</a>
+        <span>•</span>
+        <a href="mailto:ujjwalsoni.work@gmail.com" class="badge" style="text-decoration: none;">HIRE ME</a>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Interactive JavaScript: Sakura & Snake Game -->
+  <script>
+    /* ==========================================================
+       1. CHERRY BLOSSOM (SAKURA) ANIMATION (JAPAN AESTHETIC)
+       ========================================================== */
+    const sakuraCanvas = document.getElementById('sakura-canvas');
+    const sCtx = sakuraCanvas.getContext('2d');
+
+    let sWidth = sakuraCanvas.width = window.innerWidth;
+    let sHeight = sakuraCanvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      sWidth = sakuraCanvas.width = window.innerWidth;
+      sHeight = sakuraCanvas.height = window.innerHeight;
+    });
+
+    class Petal {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * sWidth;
+        this.y = Math.random() * -sHeight;
+        this.size = Math.random() * 8 + 6;
+        this.speedX = Math.random() * 1.5 + 0.5;
+        this.speedY = Math.random() * 1.2 + 0.8;
+        this.angle = Math.random() * 360;
+        this.spin = (Math.random() - 0.5) * 0.04;
+        this.alpha = Math.random() * 0.5 + 0.3;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        this.angle += this.spin;
+
+        if (this.y > sHeight || this.x > sWidth) {
+          this.reset();
+          this.y = -20;
+        }
+      }
+      draw() {
+        sCtx.save();
+        sCtx.translate(this.x, this.y);
+        sCtx.rotate(this.angle);
+        sCtx.fillStyle = `rgba(255, 183, 197, ${this.alpha})`;
+        sCtx.beginPath();
+        sCtx.ellipse(0, 0, this.size, this.size / 2, 0, 0, Math.PI * 2);
+        sCtx.fill();
+        sCtx.restore();
+      }
+    }
+
+    const petals = Array.from({ length: 32 }, () => new Petal());
+
+    function renderSakura() {
+      sCtx.clearRect(0, 0, sWidth, sHeight);
+      petals.forEach(petal => {
+        petal.update();
+        petal.draw();
+      });
+      requestAnimationFrame(renderSakura);
+    }
+    renderSakura();
+
+    /* ==========================================================
+       2. MARKETING GROWTH SNAKE GAME
+       ========================================================== */
+    const gCanvas = document.getElementById('game-canvas');
+    const gCtx = gCanvas.getContext('2d');
+    const scoreEl = document.getElementById('game-score');
+    const highEl = document.getElementById('game-high');
+    const kpiEl = document.getElementById('current-kpi');
+
+    const gridSize = 15;
+    const tileCountX = gCanvas.width / gridSize;
+    const tileCountY = gCanvas.height / gridSize;
+
+    let snake = [{ x: 10, y: 10 }];
+    let velocity = { x: 0, y: 0 };
+    let food = { x: 15, y: 10, label: 'ROAS' };
+    let score = 0;
+    let highScore = 0;
+    let gameInterval = null;
+    let isGameOver = false;
+
+    const marketingKPIs = ['ROAS', 'LEADS', 'CTR', 'CPA', 'CONV%'];
+
+    function spawnFood() {
+      food.x = Math.floor(Math.random() * tileCountX);
+      food.y = Math.floor(Math.random() * tileCountY);
+      food.label = marketingKPIs[Math.floor(Math.random() * marketingKPIs.length)];
+      kpiEl.textContent = food.label;
+    }
+
+    function gameLoop() {
+      // Move snake
+      const head = { x: snake[0].x + velocity.x, y: snake[0].y + velocity.y };
+
+      // Wall Collision Check
+      if (head.x < 0 || head.x >= tileCountX || head.y < 0 || head.y >= tileCountY) {
+        return gameOver();
+      }
+
+      // Self Collision Check
+      for (let i = 1; i < snake.length; i++) {
+        if (head.x === snake[i].x && head.y === snake[i].y) {
+          return gameOver();
+        }
+      }
+
+      snake.unshift(head);
+
+      // Check if food eaten
+      if (head.x === food.x && head.y === food.y) {
+        score += 10;
+        scoreEl.innerText = score;
+        if (score > highScore) {
+          highScore = score;
+          highEl.innerText = highScore;
+        }
+        spawnFood();
+      } else {
+        snake.pop();
+      }
+
+      // Render Screen
+      gCtx.fillStyle = '#141414';
+      gCtx.fillRect(0, 0, gCanvas.width, gCanvas.height);
+
+      // Draw Grid Accents
+      gCtx.strokeStyle = '#222';
+      for (let i = 0; i < gCanvas.width; i += gridSize) {
+        gCtx.beginPath();
+        gCtx.moveTo(i, 0);
+        gCtx.lineTo(i, gCanvas.height);
+        gCtx.stroke();
+      }
+
+      // Draw Food
+      gCtx.fillStyle = '#ff4d6d';
+      gCtx.fillRect(food.x * gridSize, food.y * gridSize, gridSize - 1, gridSize - 1);
+
+      // Draw Food Label
+      gCtx.fillStyle = '#fff';
+      gCtx.font = '8px Space Mono';
+      gCtx.fillText(food.label, food.x * gridSize - 2, food.y * gridSize - 3);
+
+      // Draw Snake
+      snake.forEach((part, index) => {
+        gCtx.fillStyle = index === 0 ? '#48bb78' : '#38a169';
+        gCtx.fillRect(part.x * gridSize, part.y * gridSize, gridSize - 1, gridSize - 1);
+      });
+    }
+
+    function gameOver() {
+      clearInterval(gameInterval);
+      isGameOver = true;
+      gCtx.fillStyle = 'rgba(0,0,0,0.75)';
+      gCtx.fillRect(0, 0, gCanvas.width, gCanvas.height);
+
+      gCtx.fillStyle = '#fff';
+      gCtx.font = '16px Space Grotesk';
+      gCtx.textAlign = 'center';
+      gCtx.fillText('CAMPAIGN FATIGUE! (GAME OVER)', gCanvas.width / 2, gCanvas.height / 2 - 10);
+      gCtx.font = '12px Space Mono';
+      gCtx.fillText('Click to relaunch campaign', gCanvas.width / 2, gCanvas.height / 2 + 15);
+    }
+
+    function startGame() {
+      snake = [{ x: 10, y: 10 }, { x: 9, y: 10 }, { x: 8, y: 10 }];
+      velocity = { x: 1, y: 0 };
+      score = 0;
+      scoreEl.innerText = 0;
+      isGameOver = false;
+      spawnFood();
+      clearInterval(gameInterval);
+      gameInterval = setInterval(gameLoop, 85);
+    }
+
+    window.addEventListener('keydown', e => {
+      switch (e.key) {
+        case 'ArrowUp':
+        case 'w':
+        case 'W':
+          if (velocity.y !== 1) velocity = { x: 0, y: -1 };
+          break;
+        case 'ArrowDown':
+        case 's':
+        case 'S':
+          if (velocity.y !== -1) velocity = { x: 0, y: 1 };
+          break;
+        case 'ArrowLeft':
+        case 'a':
+        case 'A':
+          if (velocity.x !== 1) velocity = { x: -1, y: 0 };
+          break;
+        case 'ArrowRight':
+        case 'd':
+        case 'D':
+          if (velocity.x !== -1) velocity = { x: 1, y: 0 };
+          break;
+      }
+    });
+
+    gCanvas.addEventListener('click', () => {
+      if (isGameOver || !gameInterval) {
+        startGame();
+      }
+    });
+
+    // Initial render
+    startGame();
+  </script>
+</body>
+</html>
